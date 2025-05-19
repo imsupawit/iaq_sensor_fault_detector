@@ -99,7 +99,7 @@ Discussions :
 | **DHT22**   | –40 to 80       | ❌   | ✅        | ±0.5 °C, ±2–5% RH                   | Digital   | ✅ Adafruit lib | Low       | 260บ.      | Very cheap, but slow and less accurate      |
 | **MH-Z19B** | 0 to 50         | ✅   | ❌        | ±(50 ppm + 5%) CO₂                  | UART      | ✅ with serial  | Moderate  | 950บ.    | Reliable CO₂, no temp/hum                     |
 | **BME680**  | –40 to 85       | ❌   | ✅        | ±1 °C, ±3% RH                       | I²C / SPI | ✅              | Low–mod.  | 270 บ. | IAQ index estimate (not true CO₂)               |
-| **PASCO2V15AUMA1**            | CO₂ only           | ±50 ppm ±5%, 0–32,000 ppm          | I²C/UART  | ✅ Official GitHub |Low     | 703.61  บ.         
+| **PASCO2V15AUMA1**  |         | CO₂ only  |        | ±50 ppm ±5%, 0–32,000 ppm          | I²C/UART  | ✅ Official GitHub |Low     | 703.61  บ.         
 
 The first candidate was the SCD40, a popular all-in-one IAQ sensor that measures:
 CO₂ (up to ~5000 ppm)
