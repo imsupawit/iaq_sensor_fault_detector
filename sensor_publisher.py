@@ -71,7 +71,7 @@ try:
 
             print(f"✅ Sent from {sensor_id}: {data}")
 
-        time.sleep(5)
+        time.sleep(15)
 
 except KeyboardInterrupt:
     print("\n🛑 Stopped by user.")
