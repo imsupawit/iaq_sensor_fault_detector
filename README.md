@@ -75,14 +75,22 @@ py train_fault_forecast_model.py
 
 # Files
 
-sensor_publisher.py – Data generator
+sensor_publisher.py – Data generator 
+
 fault_detector.py – Fault detection + logging
+
 email_alert.py – Notification handler
+
 fire_detector.py – Hardware trigger alert
+
 iaq_log.csv – Daily logs
+
 sensor_health_log.csv – Daily fault summaries
+
 train_fault_forecast_model.py – AI model trainer
+
 sensor_health_models.joblib – Saved ML models
+
 start_rabbitmq.bat – One-click RabbitMQ starter
 
 
