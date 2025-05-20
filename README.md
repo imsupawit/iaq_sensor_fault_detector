@@ -3,16 +3,16 @@ AI-Powered Sensor Fault Predictor and Monitoring Platform
 
 This repository contains a complete IoT system for monitoring indoor air quality (IAQ) using sensor data, detecting faults, and predicting future sensor failures with machine learning.
 
-🎯 Project Goals
+ Project Goals
 Monitor IAQ in real-time
 Detect and categorize sensor faults
 Log historical sensor data
 Predict future fault rates using AI
 Send automated email alerts to users
 
-🧱 System Components
+ System Components
 
-🔁 Real-Time Simulation
+ Real-Time Simulation
 
 sensor_publisher.py – Simulates 15 IAQ sensors and publishes their data to RabbitMQ every 15 seconds. Includes:
 Normal sensors 1-5
@@ -20,7 +20,7 @@ Disconnected (stuck) sensors6-8
 Sensors sending invalid data 9-11
 CO₂ danger sensors 12-15
 
-🕵️ Fault Detection
+ Fault Detection
 fault_detector.py – Subscribes to the RabbitMQ queue iaq_data, detects:
 Disconnected sensors (no change for 10 minutes)
 Physically impossible values
@@ -29,25 +29,25 @@ High CO₂ levels (> 1000 ppm for 20 minutes
 Logs each reading and fault to iaq_log.csv
 Optionally sends alerts using send_email()
 
-💌 Email Notification
+ Email Notification
 email_alert.py – Sends alert emails for each fault type:
 Invalid data 🚨
 Disconnection ❌
 High CO₂ ☠️
 
-🔥 Hardware Extension
+ Hardware Extension
 fire_detector.py – Monitors a GPIO pin for fire detection via fusible wire (for Raspberry Pi). Sends an alert on open circuit.
 
-📊 AI-Powered Fault Forecasting
+ AI-Powered Fault Forecasting
 
-🧼 Daily Stats
+ Daily Stats
 daily_fault_tracker.py – Analyzes iaq_log.csv daily, summarizes sensor faults, and logs to sensor_health_log.csv
 
-🧠 AI Forecast
+ AI Forecast
 train_fault_forecast_model.py – Trains a per-sensor LinearRegression model to forecast fault percent for the next day
 Flags any predicted fault > 10% with a replacement warning
 
-🛠 How to Run the System
+ How to Run the System
 
 Requirements:
 Python 3.11+
@@ -76,7 +76,7 @@ py daily_fault_tracker.py
 Run the AI predictor:
 py train_fault_forecast_model.py
 
-📁 Files
+ Files
 
 sensor_publisher.py – Data generator
 fault_detector.py – Fault detection + logging
@@ -112,19 +112,20 @@ Higher CO₂ detection range than SCD40
 Modular design: easier to maintain or upgrade
 Full Python compatibility with official support
 https://github.com/Infineon/arduino-pas-co2-sensor
+
 https://github.com/pimoroni/bme280-python
 Lower total cost than SCD40
 Option to position temp and CO₂ sensors separately for better readings
 
-🔥Go-Beyond Feature
+Go-Beyond Feature
 Since CO₂ sensors are not designed to survive fire, we added a fusible wire connected to a GPIO pin. If extreme heat occurs, the wire melts, breaks the circuit, and triggers an email alert — making the system fire-aware in hardware.
 
-📌 Alert Notification Design
+ Alert Notification Design
 I chose email as the user alert channel because:
 It’s easy to implement and test
 It works even when the user isn’t watching a dashboard
 
-📌 AI Prediction Module
+ AI Prediction Module
 I trained a per-sensor Linear Regression model to forecast tomorrow’s fault percentage. This helps:
 Proactively replace degrading sensors
 Reduce long-term maintenance cost
